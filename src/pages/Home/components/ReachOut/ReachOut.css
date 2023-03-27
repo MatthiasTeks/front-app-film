@@ -1,0 +1,31 @@
+/* HOME TEST */
+
+.home-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.home-test {
+    background: var(--black);
+    padding: 5em 0;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.home-test > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-test > div > p {
+    color: var(--white);
+    padding: 1em 0;
+    text-align: center;
+    width: 80%;
+}

@@ -1,0 +1,195 @@
+/* NAVBAR */
+
+.navbar {
+    border-bottom: 1px solid #1b191920;
+    height: 10vh;
+    padding: 1em;
+    position: relative;
+    width: 100vw;
+    z-index: 101;
+}
+
+.logo {
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (max-width: 900px){
+    .navbar {
+        padding: 0.5em;
+        justify-content: flex-start !important;
+    }
+}
+
+@media screen and (min-width: 900px){
+    .navbar {
+        padding-inline: 3em;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .holder-logo {
+        flex-grow: 1;
+        justify-content: flex-start !important;
+        height: 100%;
+        width: 100%;
+    }
+    .holder-logo a {
+        height: 100%;
+        width: 100%;
+    }
+    .holder-logo img {
+        height: 100%;
+        width: auto;
+    }
+}
+
+@media screen and (min-width: 900px){
+    .holder-logo img {
+        width: 3vw;
+    }
+}
+
+/* NAVBAR LINKS -- only on desktop and big tablet */
+
+#navbar-links {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    color: #fff;
+    flex-grow: 1;
+    padding: 0.5em 1em;
+    overflow: hidden;
+}
+
+.link-name {
+    cursor: pointer;
+    text-overflow: ellipsis;
+    margin: 0 0.5em;
+    white-space: nowrap;
+}
+
+.link-name p {
+    color: var(--black);
+    font-size: 18px;
+    font-weight: lighter;
+    line-height: 40px;
+    text-align: center;
+}
+
+.link-name p:after {
+    display:block;
+    content: '';
+    border-bottom: solid 2px #710477;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+.link-name p:hover:after {
+    transform: scaleX(1);
+}
+
+.link-active p:after {
+    transform: scaleX(1);
+}
+
+
+@media screen and (max-width: 900px){
+    #navbar-links {
+        display: none;
+    }
+}
+
+/* NAVBAR SOCIAL -- only on desktop and big tablet */
+
+.navbar-social {
+    padding-right: 1em;
+    transition: visibility 0.5s ease-in-out;
+    visibility: visible;
+}
+
+.navbar-social svg {
+    color: var(--black);
+    font-size: 32px;
+    transition: color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.navbar-social:hover svg {
+    color:  #710477;
+}
+
+#whited svg {
+    color: #F8F8F8;
+}
+
+@media screen and (max-width: 900px){
+    .navbar-social {
+        position: inherit;
+    }
+}
+
+/* NAVBAR BURGER only on mobile and tablet */
+
+.navbar-burger {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+    padding: 0;
+    z-index: 101;
+}
+
+.navbar-burger svg {
+    width: 40px;
+}
+
+.burger-line {
+    fill: none;
+    stroke: var(--black);
+    stroke-width: 6;
+    transition:
+            1s stroke 0.5s ease-in-out,
+            stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+            stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line1 {
+    stroke-dasharray: 50 207;
+    stroke-width: 6;
+}
+
+.line2 {
+    stroke-dasharray: 50 60;
+    stroke-width: 6;
+}
+
+.line3 {
+    stroke-dasharray: 50 207;
+    stroke-width: 6;
+}
+
+.opened .line1 {
+    stroke: var(--white);
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}
+
+.opened .line2 {
+    stroke: var(--white);
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
+}
+
+.opened .line3 {
+    stroke: var(--white);
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}
+
+@media screen and (max-width: 900px){
+    .navbar-burger {
+        display: flex;
+    }
+}
