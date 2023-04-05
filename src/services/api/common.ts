@@ -46,3 +46,34 @@ export function useDataWithLoading(url: string): {
         isError,
     };
 }
+
+export function getSignedProjectMediaUrl(key: string): {
+    data: any,
+    error: Error | null,
+    isLoading: boolean,
+    isError: boolean
+} {
+    if(key !== undefined){
+        console.log('queried', key)
+        const queryUrl = `${import.meta.env.VITE_API_URL}/project/${key}/sign-url`;
+
+        const { data, error, isLoading, isError } = useQuery(
+            ['data', queryUrl],
+            () => fetcher(queryUrl)
+        );
+
+        return {
+            data,
+            error: error ? error as Error : null,
+            isLoading,
+            isError,
+        };
+    }
+
+    return {
+        data: undefined,
+        error: null,
+        isLoading: false,
+        isError: false,
+    };
+}

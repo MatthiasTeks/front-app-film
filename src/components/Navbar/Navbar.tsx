@@ -23,12 +23,12 @@ const Navbar: FC<Props> = ({ isBurgerOpen, setIsBurgerOpen }) => {
             </div>
             {/* LINKS */}
             <div id="navbar-links" className="flex row">
-                <NavLink to="la-bande" className={({ isActive }) => isActive ? "link-active" : undefined}>
+                <NavLink to="crew" className={({ isActive }) => isActive ? "link-active" : undefined}>
                     <div className="link-name">
                         <p>LA BANDE</p>
                     </div>
                 </NavLink>
-                <NavLink to="bande-demo" className={({ isActive }) => isActive ? "link-active" : undefined}>
+                <NavLink to="demo" className={({ isActive }) => isActive ? "link-active" : undefined}>
                     <div className="link-name">
                         <p>BANDE DEMO</p>
                     </div>

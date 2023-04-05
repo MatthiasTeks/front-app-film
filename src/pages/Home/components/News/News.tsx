@@ -9,12 +9,13 @@ import { Animation } from "../../../../components/Utils/Utils";
 import './News.css';
 
 interface News {
+    id_news: number,
     name: string;
-    media: string;
-    isInsta: boolean;
-    linkInsta: string;
     resume: string;
     date: number;
+    s3_image_key: string;
+    isInsta: number;
+    linkInsta: string;
 }
 
 const Actualite: FC = () => {
@@ -37,7 +38,7 @@ const Actualite: FC = () => {
                                     <img
                                         alt={actu.name}
                                         height="350"
-                                        src={actu.media}
+                                        src={actu.s3_image_key}
                                     />
                                     <div>
                                         <div className="flex row justifyBetween center">

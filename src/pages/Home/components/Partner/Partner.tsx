@@ -4,8 +4,9 @@ import Marquee from "react-fast-marquee";
 import './Partner.css';
 
 interface Partner {
+    id_partner: number,
     name: string;
-    media: string;
+    s3_image_key: string;
 }
 
 const HomePartner: FC = () => {
@@ -27,7 +28,7 @@ const HomePartner: FC = () => {
                             <img
                                 key={`${partner.name}_${i}`}
                                 className="partner-card"
-                                src={partner.media}
+                                src={partner.s3_image_key}
                                 alt={partner.name}
                             />
                         )

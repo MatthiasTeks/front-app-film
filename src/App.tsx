@@ -3,32 +3,18 @@ import { Outlet } from 'react-router-dom';
 
 import { useDataWithLoading } from './services/api/common';
 
-import Navbar from "./components/Navbar/Navbar";
+import { Project } from "./interfaces/Interface";
 
-import 'react-loading-skeleton/dist/skeleton.css';
-import './utils/Keyframes.css';
-import './App.css';
+import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 
-interface Project {
-    id: string;
-    title: string;
-    description: string;
-    year: number;
-    images: {
-        url: string;
-        formats: {
-            thumbnail: {
-                url: string;
-            };
-        };
-    }[];
-}
+import 'react-loading-skeleton/dist/skeleton.css';
+import './App.css';
 
 export const ProjectContext = createContext<Project[] | null>(null);
 
 const App: FC = () => {
-    const { data, error, isLoading, isError } = useDataWithLoading('projet');
+    const { data, error, isLoading, isError } = useDataWithLoading('project/');
     const [isBurgerOpen, setIsBurgerOpen] = useState(false);
     const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
 
@@ -44,7 +30,7 @@ const App: FC = () => {
         <ProjectContext.Provider value={data}>
             <Navbar isBurgerOpen={isBurgerOpen} setIsBurgerOpen={setIsBurgerOpen} />
             <Outlet context={[isBurgerOpen, setIsBurgerOpen]} />
-            <Footer isNewsletterOpen={isNewsletterOpen} setIsNewsletterOpen={setIsNewsletterOpen} />
+            <Footer isNewsletterOpen={isNewsletterOpen} />
         </ProjectContext.Provider>
     );
 };

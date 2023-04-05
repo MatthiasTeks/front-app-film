@@ -5,11 +5,12 @@ import { useDataWithLoading } from "../../../../services/api/common";
 
 import Button from '../../../../components/Button/Button.jsx';
 
+import DefaultVideo from '../../../../assets/default_home_video.mp4';
 import './Video.css';
 
 interface Movie {
-    poster: string;
-    lien: string;
+    id_home_media: number;
+    s3_video_key: string;
 }
 
 const Video: FC = () => {
@@ -17,8 +18,11 @@ const Video: FC = () => {
     const movie: Movie[] = data ?? [];
 
     const renderMoviePlayer = () => (
-        <video autoPlay muted loop id="home-movie" poster={movie[0].poster}>
-            <source src={movie[0].lien} type="video/webm"/>
+        <video autoPlay muted loop id="home-movie">
+            <source
+                src={movie.length ? movie[0].s3_video_key : DefaultVideo}
+                type="video/mp4"
+            />
         </video>
     );
 

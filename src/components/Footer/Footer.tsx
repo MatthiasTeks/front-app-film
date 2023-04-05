@@ -5,16 +5,15 @@ import './Footer.css';
 
 interface Props {
     isNewsletterOpen: boolean;
-    setIsNewsletterOpen: (open: boolean) => void;
 }
 
-const Footer: FC<Props> = ({isNewsletterOpen, setIsNewsletterOpen}) => {
+const Footer: FC<Props> = ({isNewsletterOpen}) => {
     return (
         <div className="footer-holder flex column justifyCenter">
             <div className="footer flex row justifyBetween">
                 <div className="footer-nav flex column justifyStart">
                     <Link to="mentions-legales">MENTIONS LEGALES</Link>
-                    <p onClick={() => setIsNewsletterOpen(!isNewsletterOpen)}>NEWSLETTER</p>
+                    <p>NEWSLETTER</p>
                     <p>CONTACT</p>
                 </div>
             </div>
