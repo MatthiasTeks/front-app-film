@@ -1,6 +1,8 @@
-import React, { useState, createContext, FC, ReactNode } from "react";
+import React, { useState, createContext, FC, ReactNode, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+import { AlertContext } from "./AlertContext";
 
 interface IAuthContext {
     email: string;
@@ -19,6 +21,7 @@ export const AuthContext = createContext<IAuthContext | undefined>(undefined);
 const AuthContextProvider: FC<Props> = ({ children }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { addAlert } = useContext(AlertContext);
 
     const navigate = useNavigate();
 
@@ -31,7 +34,7 @@ const AuthContextProvider: FC<Props> = ({ children }) => {
     const handleConnexion = async (): Promise<void> => {
         const token = localStorage.getItem("token");
         try {
-            const result = await axios({
+            await axios({
                 method: "POST",
                 url: `${import.meta.env.VITE_API_URL}/auth/protected`,
                 headers: {
@@ -59,8 +62,13 @@ const AuthContextProvider: FC<Props> = ({ children }) => {
             })
             .then((res) => {
                 localStorage.setItem("token", res.headers["x-access-token"]);
+                addAlert({ message: "Connexion réussie", type: "success" });
             })
-            .then(handleConnexion);
+            .then(handleConnexion)
+            .catch(() => {
+                console.log('error');
+                addAlert({ message: "Erreur de connexion", type: "error" });
+            });
     };
 
     return (

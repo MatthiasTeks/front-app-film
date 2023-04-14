@@ -4,7 +4,7 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import { useDataWithLoading } from "../../../../services/api/common";
 import { convertTimestamp } from "../../../../services/common/convertTimestamp";
 
-import { Animation } from "../../../../components/Utils/Utils";
+import { Animation } from "../../../../components/Utils/Animation/Animation";
 
 import './News.css';
 

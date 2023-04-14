@@ -1,0 +1,30 @@
+.alert-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    z-index: 100;
+}
+
+.alert {
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.alert-success {
+    background-color: green;
+}
+
+.alert-warning {
+    background-color: yellow;
+}
+
+.alert-error {
+    background-color: red;
+}

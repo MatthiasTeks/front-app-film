@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { FC, useContext } from 'react'
 
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -6,8 +6,9 @@ import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
 
 import './Login.css';
+import {InputComponent} from "../../components/Input/InputComponent";
 
-const Login = () => {
+const Login: FC = () => {
     const authContext = useContext(AuthContext);
 
     if (!authContext) {
@@ -15,14 +16,6 @@ const Login = () => {
     }
 
     const { email, setEmail, password, setPassword, handleSubmit } = authContext;
-
-    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value)
-    }
-
-    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value)
-    }
 
     const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -35,20 +28,24 @@ const Login = () => {
                 <h1>LES FILMS DE LA BANDE</h1>
                 <h2>PANEL ADMINISTRATEUR</h2>
                 <form className='admin-access flex column' onSubmit={handleFormSubmit}>
-                    <input
-                        type='email'
-                        placeholder='Email'
-                        value={email}
-                        onChange={handleEmailChange}
-                        required
-                    />
-                    <input
-                        type='password'
-                        placeholder='Mot de passe'
-                        value={password}
-                        onChange={handlePasswordChange}
-                        required
-                    />
+                    <div className="holder-input">
+                        <InputComponent
+                            type="email"
+                            label="email"
+                            value={email}
+                            onChange={(value) => setEmail(value)}
+                            required={true}
+                            autoComplete="username"
+                        />
+                        <InputComponent
+                            type="password"
+                            label="password"
+                            value={password}
+                            onChange={(value) => setPassword(value)}
+                            required={true}
+                            autoComplete="current-password"
+                        />
+                    </div>
                     <Button isBlack={true} text="Connexion" type="submit"/>
                 </form>
                 <Footer isNewsletterOpen={false} />

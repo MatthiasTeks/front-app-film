@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Link } from "react-router-dom";
 
 import Button from "../../../../components/Button/Button.jsx";
-import { Animation } from "../../../../components/Utils/Utils";
+import { Animation } from "../../../../components/Utils/Animation/Animation";
 
 import './Introduction.css';
 

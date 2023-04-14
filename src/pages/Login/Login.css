@@ -8,9 +8,22 @@
     text-align: center;
 }
 
+.admin-log h1 {
+    font-size: 2.5em;
+}
+
+.admin-log h2 {
+    font-size: 1.75em;
+}
+
 .admin-log .footer-holder {
     position: fixed;
     bottom: 0;
+}
+
+.holder-input {
+    margin-block: 2em;
+    width: 25%;
 }
 
 /* ADMIN ACCESS */
@@ -18,15 +31,4 @@
 .admin-access {
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
-}
-
-.admin-access .MuiFormControl-root {
-    margin-top: 2em;
-    width: 50%;
-}
-
-.admin-access .button {
-    margin-top: 2em;
 }

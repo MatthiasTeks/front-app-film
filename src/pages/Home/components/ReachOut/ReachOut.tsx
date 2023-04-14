@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Animation } from "../../../../components/Utils/Utils";
+import { Animation } from "../../../../components/Utils/Animation/Animation";
 import Button from "../../../../components/Button/Button.jsx";
 
 import './ReachOut.css';

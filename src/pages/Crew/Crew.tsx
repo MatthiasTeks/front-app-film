@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import Button from '../../components/Button/Button';
-import { Animation } from "../../components/Utils/Utils";
+import { Animation } from "../../components/Utils/Animation/Animation";
 
 import LaBandeTeam from '../../assets/LaBandeTeam.webp';
 import LaBandeWork from '../../assets/LaBandeWork.webp';

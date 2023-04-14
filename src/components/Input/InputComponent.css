@@ -1,0 +1,42 @@
+.input-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.input-container label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #4a4a4a;
+    transition: 0.3s;
+}
+
+.input-container input {
+    font-size: 16px;
+    padding: 12px 12px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-container input::placeholder {
+    color: #999;
+    transition: 0.3s;
+}
+
+.input-container.focused label,
+.input-container input:focus {
+    color: #710477;
+}
+
+.input-container.focused input {
+    border-color: #710477;
+}
+
+.input-container.focused input::placeholder {
+    color: transparent;
+}
