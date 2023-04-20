@@ -1,18 +1,14 @@
 import React, { FC } from "react";
 import { Link } from 'react-router-dom';
 
+import { Project } from "../../../../interfaces/Interface";
 import { useDataWithLoading} from "../../../../services/api/common";
 
 import './Carousel.css';
 
-interface Project {
-    name: string;
-    label: string;
-    s3_image_main_key: string;
-}
 
 const Carousel: FC = () => {
-    const { data, isLoading } = useDataWithLoading("home/project");
+    const { data, isLoading } = useDataWithLoading("project/highlight");
     const project: Project[] = data ?? [];
 
     const onCarouselDragStart = (e: React.MouseEvent<HTMLDivElement>): void => {

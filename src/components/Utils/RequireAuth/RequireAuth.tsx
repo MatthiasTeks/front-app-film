@@ -23,7 +23,7 @@ export const RequireAuth: FC<PropsRequireAuth> = ({ children }) => {
         const token = localStorage.getItem("token");
         axios({
             method: "POST",
-            url: `${import.meta.env.VITE_API_URL}/auth/protected`,
+            url: `${import.meta.env.VITE_API_URL}/user/protected`,
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -33,7 +33,7 @@ export const RequireAuth: FC<PropsRequireAuth> = ({ children }) => {
             })
             .catch((err) => {
                 setAccess(false);
-                navigate("/admin");
+                navigate("/login");
             });
     };
 

@@ -36,14 +36,14 @@ const AuthContextProvider: FC<Props> = ({ children }) => {
         try {
             await axios({
                 method: "POST",
-                url: `${import.meta.env.VITE_API_URL}/auth/protected`,
+                url: `${import.meta.env.VITE_API_URL}/user/protected`,
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            navigate("/panel-admin");
+            navigate("/panel/dashboard");
         } catch (err) {
-            navigate("/admin");
+            navigate("/panel");
         }
     };
 
@@ -56,7 +56,7 @@ const AuthContextProvider: FC<Props> = ({ children }) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         axios
-            .post(`${import.meta.env.VITE_API_URL}/auth/login`, {
+            .post(`${import.meta.env.VITE_API_URL}/user/login`, {
                 email: email,
                 password: password,
             })
@@ -67,7 +67,7 @@ const AuthContextProvider: FC<Props> = ({ children }) => {
             .then(handleConnexion)
             .catch(() => {
                 console.log('error');
-                addAlert({ message: "Erreur de connexion", type: "error" });
+                addAlert({ message: "Identifiants incorrects", type: "error" });
             });
     };
 

@@ -3,7 +3,6 @@ import React, { FC, useContext } from 'react'
 import { AuthContext } from "../../contexts/AuthContext";
 
 import Button from "../../components/Button/Button";
-import Footer from "../../components/Footer/Footer";
 
 import './Login.css';
 import {InputComponent} from "../../components/Input/InputComponent";
@@ -48,7 +47,6 @@ const Login: FC = () => {
                     </div>
                     <Button isBlack={true} text="Connexion" type="submit"/>
                 </form>
-                <Footer isNewsletterOpen={false} />
             </div>
         </>
     )

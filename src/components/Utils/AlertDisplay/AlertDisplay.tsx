@@ -1,10 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AlertContext } from "../../../contexts/AlertContext";
 import './AlertDisplay.css';
 
 const AlertDisplay: React.FC = () => {
-    const { alerts } = useContext(AlertContext);
+    const { alerts, removeAlert } = useContext(AlertContext);
 
+    useEffect(() => {
+        if (alerts.length > 0) {
+            const timeout = setTimeout(() => {
+                removeAlert(alerts[0]);
+            }, 3000);
+
+            return () => clearTimeout(timeout);
+        }
+    }, [alerts, removeAlert]);
+
+    console.log(alerts)
     return (
         <div className="alert-container">
             {alerts.map((alert, index) => (

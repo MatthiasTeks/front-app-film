@@ -10,7 +10,7 @@ interface Partner {
 }
 
 const HomePartner: FC = () => {
-    const { data, isLoading } = useDataWithLoading("home/partner");
+    const { data, isLoading } = useDataWithLoading("partner");
     const partner: Partner[] = data ?? [];
 
     if(isLoading) return null;

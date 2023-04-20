@@ -6,21 +6,21 @@ import { convertTimestamp } from "../../../../services/common/convertTimestamp";
 
 import { Animation } from "../../../../components/Utils/Animation/Animation";
 
-import './News.css';
+import './Feed.css';
 
-interface News {
-    id_news: number,
+interface Feed {
+    id_feed: number,
     name: string;
     resume: string;
     date: number;
     s3_image_key: string;
-    isInsta: number;
-    linkInsta: string;
+    is_link: number;
+    link: string;
 }
 
 const Actualite: FC = () => {
-    const { data, isLoading } = useDataWithLoading("home/news");
-    const news: News[] = data ?? [];
+    const { data, isLoading } = useDataWithLoading("feed");
+    const news: Feed[] = data ?? [];
 
     if(isLoading) return null;
 
@@ -43,8 +43,8 @@ const Actualite: FC = () => {
                                     <div>
                                         <div className="flex row justifyBetween center">
                                             <h3 className="card-title">{actu.name}</h3>
-                                            { actu.isInsta ?
-                                                <a href={actu.linkInsta} rel="noreferrer" target="_blank">
+                                            { actu.is_link ?
+                                                <a href={actu.link} rel="noreferrer" target="_blank">
                                                     <AiOutlineInstagram />
                                                 </a> : ""
                                             }

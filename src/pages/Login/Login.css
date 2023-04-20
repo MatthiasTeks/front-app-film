@@ -1,7 +1,12 @@
 /* ADMIN LOG */
 
 .admin-log {
-    padding: 20vh 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
 }
 
 .admin-log h1, .admin-log h2 {
@@ -23,7 +28,7 @@
 
 .holder-input {
     margin-block: 2em;
-    width: 25%;
+    width: 100%;
 }
 
 /* ADMIN ACCESS */
@@ -31,4 +36,5 @@
 .admin-access {
     justify-content: center;
     align-items: center;
+    width: 400px;
 }

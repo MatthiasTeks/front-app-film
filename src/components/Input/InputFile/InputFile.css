@@ -1,0 +1,29 @@
+.input-file label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.input-file input[type="file"] {
+    display: none;
+}
+
+.input-file label::after {
+    content: "Choisir un fichier";
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #710477;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.input-file label:hover::after {
+    background-color: #2c032f;
+}
+
+.input-file input[type="file"]:focus + label::after {
+    outline: 2px solid #2c032f;
+}

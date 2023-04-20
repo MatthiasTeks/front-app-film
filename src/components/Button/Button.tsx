@@ -6,24 +6,17 @@ interface Props {
     name?: string;
     type?: 'button' | 'submit' | 'reset';
     onClick?: () => void;
-    isWhite?: boolean;
-    isBlack?: boolean;
-    size?: string;
-    className?: string;
+    category: 'primary-btn' | 'secondary-btn' | 'tertiary-btn';
+    disabled?: boolean
 }
 
-const Button: FC<Props> = ({text, name, type, onClick, isWhite, isBlack, size, className}) => {
+const Button: FC<Props> = ({ text, type, onClick, category, disabled}) => {
     return (
         <button
-            className={`
-                button flex row justifyCenter center
-                ${isWhite ? 'button-white' : isBlack ? 'button-black' : ''}
-                ${size}
-                ${className}
-            `}
-            name={name}
+            className={`button flex row justifyCenter center ${category} ${disabled ? "disabled-btn" : ''}`}
             type={type}
             onClick={onClick}
+            disabled={disabled}
         >
             <p className="is5">{text}</p>
         </button>

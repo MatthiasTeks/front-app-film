@@ -1,4 +1,4 @@
-import { FC } from "react";
+import {FC, useEffect} from "react";
 import { Link } from 'react-router-dom';
 
 import { useDataWithLoading } from "../../../../services/api/common";
@@ -8,19 +8,13 @@ import Button from '../../../../components/Button/Button.jsx';
 import DefaultVideo from '../../../../assets/default_home_video.mp4';
 import './Video.css';
 
-interface Movie {
-    id_home_media: number;
-    s3_video_key: string;
-}
-
 const Video: FC = () => {
-    const { data, isLoading } = useDataWithLoading("home/media");
-    const movie: Movie[] = data ?? [];
+    const { data, isLoading } = useDataWithLoading("background");
 
     const renderMoviePlayer = () => (
         <video autoPlay muted loop id="home-movie">
             <source
-                src={movie.length ? movie[0].s3_video_key : DefaultVideo}
+                src={data ? data : DefaultVideo}
                 type="video/mp4"
             />
         </video>

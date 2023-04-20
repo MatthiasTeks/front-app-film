@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Video from "./components/Video/Video";
-import News from "./components/News/News";
+import News from "./components/Feed/Feed";
 import Introduction from "./components/Introduction/Introduction";
 import Carousel from "./components/Carousel/Carousel";
 import ReachOut from "./components/ReachOut/ReachOut";

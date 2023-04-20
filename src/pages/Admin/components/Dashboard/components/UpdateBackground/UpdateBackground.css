@@ -1,0 +1,10 @@
+#background-video-admin {
+    height: auto;
+    object-fit: cover;
+    position: absolute;
+    width: 30%;
+    top: 50%;
+    right: 2em;
+    transform: translateY(-50%);
+    border-radius: 12px;
+}

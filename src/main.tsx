@@ -16,6 +16,7 @@ import { RequireAuth } from "./components/Utils/RequireAuth/RequireAuth";
 import { ScrollTop } from "./components/Utils/ScrollTop/ScrollTop";
 import AlertProvider from "./contexts/AlertContext";
 import AlertDisplay from "./components/Utils/AlertDisplay/AlertDisplay";
+import Dashboard from "./pages/Admin/components/Dashboard/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -23,22 +24,23 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
           <ScrollTop />
-          <AuthContextProvider>
-              <AlertProvider>
-                  <AlertDisplay />
-                  <Routes>
-                      <Route path="/" element={<App />}>
-                          <Route index element={<Home />} />
-                          <Route path="crew" element={<Crew />} />
-                          <Route path="demo" element={<Gallery />} />
-                      </Route>
-                      <Route path="/login" element={<Login />} />
-                      <Route path="/panel-admin" element={<RequireAuth><Admin /></RequireAuth>}>
-                      </Route>
-                      <Route path="*" element={<Navigate to="/" />} />
-                  </Routes>
-              </AlertProvider>
-          </AuthContextProvider>
+          <AlertProvider>
+              <AuthContextProvider>
+                      <AlertDisplay />
+                      <Routes>
+                          <Route path="/" element={<App />}>
+                              <Route index element={<Home />} />
+                              <Route path="crew" element={<Crew />} />
+                              <Route path="demo" element={<Gallery />} />
+                          </Route>
+                          <Route path="/login" element={<Login />} />
+                          <Route path="/panel" element={<RequireAuth><Admin /></RequireAuth>}>
+                              <Route path="/panel/dashboard" element={<Dashboard />} />
+                          </Route>
+                          <Route path="*" element={<Navigate to="/" />} />
+                      </Routes>
+              </AuthContextProvider>
+          </AlertProvider>
       </BrowserRouter>
     </QueryClientProvider>,
 )

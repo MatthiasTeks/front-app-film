@@ -8,11 +8,13 @@ interface Alert {
 interface AlertContextProps {
     alerts: Alert[];
     addAlert: (alert: Alert) => void;
+    removeAlert: (alert: Alert) => void;
 }
 
 export const AlertContext = createContext<AlertContextProps>({
     alerts: [],
     addAlert: () => {},
+    removeAlert: () => {}
 });
 
 interface AlertProviderProps {
@@ -26,8 +28,12 @@ const AlertProvider: React.FC<AlertProviderProps> = ({ children }) => {
         setAlerts((prevState) => [...prevState, alert]);
     };
 
+    const removeAlert = (alert: Alert) => {
+        setAlerts((prevState) => prevState.filter(a => a !== alert));
+    };
+
     return (
-        <AlertContext.Provider value={{ alerts, addAlert }}>
+        <AlertContext.Provider value={{ alerts, addAlert, removeAlert }}>
             {children}
         </AlertContext.Provider>
     );
