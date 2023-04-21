@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useDataWithLoading } from "../../../../services/api/common";
+import { useDataWithLoading } from "../../../../services/api/fetch";
 import Marquee from "react-fast-marquee";
 import './Partner.css';
 

@@ -4,7 +4,7 @@ import InputFile from "../../../../../../components/Input/InputFile/InputFile";
 import Button from "../../../../../../components/Button/Button";
 
 import { AlertContext } from "../../../../../../contexts/AlertContext";
-import { useDataWithLoading } from "../../../../../../services/api/common";
+import { useDataWithLoading } from "../../../../../../services/api/fetch";
 import { uploadFileToUrl } from "../../../../../../services/api/file";
 
 import './UpdateBackground.css';
@@ -57,7 +57,7 @@ export const UpdateBackground: FC = () => {
                 <h3>Vidéo de la page d'accueil</h3>
                 <form onSubmit={(e) => {uploadHomeVideo(e, selectedFile, 'background/update')}}>
                     <div>
-                        <InputFile required={true} accept=".webm" setter={setSelectedFile} label="" />
+                        <InputFile<File | null> id="update-bg" required={true} accept=".webm" setter={setSelectedFile} label="" />
                         { !isLoading &&
                             <video key={videoKey} autoPlay muted loop id="background-video-admin">
                                 <source src={getSource()} type="video/webm" />

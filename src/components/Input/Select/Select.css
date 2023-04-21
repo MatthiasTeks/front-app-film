@@ -1,0 +1,44 @@
+.select-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+select {
+    display: block;
+    width: 100%;
+    padding: 12px 12px;
+    font-size: 16px;
+    color: #4a4a4a;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    appearance: none;
+}
+
+select:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.5);
+}
+
+.select-wrapper::before {
+    content: "\f078";
+    font-weight: 400;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #ccc;
+    pointer-events: none;
+}
+
+@media (max-width: 576px) {
+    select {
+        padding-right: 2.5rem;
+    }
+    .select-wrapper::before {
+        right: 0.75rem;
+    }
+}

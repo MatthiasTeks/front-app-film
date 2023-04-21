@@ -1,25 +1,28 @@
 import React, {FC} from "react";
-import {handleFileChange} from "../../../services/admin/common";
+import {handleFileChange} from "../../../helpers/file";
 import './InputFile.css';
 
-interface Props {
+interface Props<T> {
+    id: string;
     label: string;
-    setter: React.Dispatch<React.SetStateAction<File | null>>;
+    setter: React.Dispatch<React.SetStateAction<T>>;
     accept: string,
-    required: boolean
+    required: boolean,
+    multiple?: boolean
 }
 
-const InputFile: FC<Props> = ({label, setter, accept, required}) => {
+const InputFile = <T extends File | File[] | null>({id, label, setter, accept, required, multiple}: Props<T>) => {
     return (
         <div className="input-file">
-            <label htmlFor="file">{label}</label>
+            <label htmlFor={id}>{label}</label>
             <input
                 type="file"
-                id="file"
-                name="file"
+                id={id}
+                name={id}
                 accept={accept}
                 required={required}
-                onChange={(e) => setter(handleFileChange(e))}
+                onChange={(e) => setter(handleFileChange(e) as T)}
+                multiple={multiple}
             />
         </div>
     );

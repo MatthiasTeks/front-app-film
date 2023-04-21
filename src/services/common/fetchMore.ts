@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {useDataWithLoading} from "../api/common";
+import {useDataWithLoading} from "../api/fetch";
 
 type FetchMoreProps = {
     url: string;

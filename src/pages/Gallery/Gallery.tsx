@@ -1,6 +1,6 @@
 import React, { useState, FC, useContext, useEffect } from "react";
 
-import { getSignedProjectMediaUrl } from "../../services/api/common";
+import { getSignedProjectMediaUrl } from "../../services/api/fetch";
 
 import { ProjectContext } from "../../App";
 

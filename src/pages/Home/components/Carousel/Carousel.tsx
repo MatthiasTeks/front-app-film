@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Link } from 'react-router-dom';
 
 import { Project } from "../../../../interfaces/Interface";
-import { useDataWithLoading} from "../../../../services/api/common";
+import { useDataWithLoading} from "../../../../services/api/fetch";
 
 import './Carousel.css';
 

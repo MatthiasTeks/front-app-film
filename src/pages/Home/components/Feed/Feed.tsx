@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { AiOutlineInstagram } from 'react-icons/ai';
 
-import { useDataWithLoading } from "../../../../services/api/common";
+import { useDataWithLoading } from "../../../../services/api/fetch";
 import { convertTimestamp } from "../../../../services/common/convertTimestamp";
 
 import { Animation } from "../../../../components/Utils/Animation/Animation";

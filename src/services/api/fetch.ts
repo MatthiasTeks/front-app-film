@@ -54,7 +54,6 @@ export function getSignedProjectMediaUrl(key: string): {
     isError: boolean
 } {
     if(key !== undefined){
-        console.log('queried', key)
         const queryUrl = `${import.meta.env.VITE_API_URL}/project/${key}/sign-url`;
 
         const { data, error, isLoading, isError } = useQuery(

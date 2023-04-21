@@ -1,7 +1,7 @@
 import {FC, useEffect} from "react";
 import { Link } from 'react-router-dom';
 
-import { useDataWithLoading } from "../../../../services/api/common";
+import { useDataWithLoading } from "../../../../services/api/fetch";
 
 import Button from '../../../../components/Button/Button.jsx';
 

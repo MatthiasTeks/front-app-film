@@ -9,17 +9,54 @@
     width: 20vw;
 }
 
+.nav-admin img {
+    width: 50%;
+    position: absolute;
+    top: 5em;
+    left: 5em;
+}
+
 .nav-admin a {
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 14px 0;
+    border-radius: 6px;
+    background-color: transparent;
+    transition: background-color 0.4s ease-in;
+}
+
+.nav-admin a:hover {
+    background-color: #68686838;
+}
+
+.nav-admin p {
+    padding-left: 0.5em;
 }
 
 .nav-admin svg {
-    color: var(--white);
+    margin-left: 1em;
 }
 
-.nav-admin h2 {
-    color: var(--white);
-    padding-left: 0.5em;
+.nav-admin p, .nav-admin svg {
+    color: #cfcbcb;
+    font-size: 20px;
+    transition: color 0.4s ease-in;
+}
+
+.nav-admin a:hover p, .nav-admin a:hover svg {
+    color: white;
+}
+
+.holder-link-admin {
+    padding-inline: 4em;
+    width: 100%;
+}
+
+.link-active-admin {
+    background-color: #68686838 !important;
+}
+
+.link-active-admin p, .link-active-admin svg {
+    color: white !important;
 }
