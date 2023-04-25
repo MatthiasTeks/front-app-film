@@ -17,7 +17,7 @@ import { ScrollTop } from "./components/Utils/ScrollTop/ScrollTop";
 import AlertProvider from "./contexts/AlertContext";
 import AlertDisplay from "./components/Utils/AlertDisplay/AlertDisplay";
 import Dashboard from "./pages/Admin/components/Dashboard/Dashboard";
-import {NewProject} from "./pages/Admin/components/Project/components/NewProject/NewProject";
+import {Project} from "./pages/Admin/components/Project/Project";
 
 const queryClient = new QueryClient();
 
@@ -37,7 +37,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
                           <Route path="/login" element={<Login />} />
                           <Route path="/panel" element={<RequireAuth><Admin /></RequireAuth>}>
                               <Route path="/panel/dashboard" element={<Dashboard />} />
-                              <Route path="/panel/project" element={<NewProject />} />
+                              <Route path="/panel/project" element={<Project />} />
                           </Route>
                           <Route path="*" element={<Navigate to="/" />} />
                       </Routes>

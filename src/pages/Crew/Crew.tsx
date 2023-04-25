@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import Button from '../../components/Button/Button';
+import {Button} from '../../components/Button/Button';
 import { Animation } from "../../components/Utils/Animation/Animation";
 
 import LaBandeTeam from '../../assets/LaBandeTeam.webp';

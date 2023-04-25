@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useDataWithLoading } from "../../../../services/api/fetch";
 
-import Button from '../../../../components/Button/Button.jsx';
+import { Button } from '../../../../components/Button/Button.jsx';
 
 import DefaultVideo from '../../../../assets/default_home_video.mp4';
 import './Video.css';

@@ -10,7 +10,7 @@ interface Props {
     disabled?: boolean
 }
 
-const Button: FC<Props> = ({ text, type, onClick, category, disabled}) => {
+export const Button: FC<Props> = ({ text, type, onClick, category, disabled}) => {
     return (
         <button
             className={`button flex row justifyCenter center ${category} ${disabled ? "disabled-btn" : ''}`}
@@ -22,5 +22,3 @@ const Button: FC<Props> = ({ text, type, onClick, category, disabled}) => {
         </button>
     );
 };
-
-export default Button;

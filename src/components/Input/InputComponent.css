@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    margin-bottom: 16px;
-    width: 100%;
+    margin-block: 0.5em;
+    width: 250px;
 }
 
 .input-container label {
@@ -17,7 +17,7 @@
 .input-container input {
     font-size: 16px;
     padding: 12px 12px;
-    border: 1px solid transparent;
+    border: 1px solid #dfdfdf;
     border-radius: 6px;
     outline: none;
     transition: 0.3s;

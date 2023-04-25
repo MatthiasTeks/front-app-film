@@ -1,7 +1,7 @@
 import {FC, FormEvent, useContext, useEffect, useState} from "react";
 
-import InputFile from "../../../../../../components/Input/InputFile/InputFile";
-import Button from "../../../../../../components/Button/Button";
+import { InputFile } from "../../../../../../components/Input/InputFile/InputFile";
+import { Button } from "../../../../../../components/Button/Button";
 
 import { AlertContext } from "../../../../../../contexts/AlertContext";
 import { useDataWithLoading } from "../../../../../../services/api/fetch";

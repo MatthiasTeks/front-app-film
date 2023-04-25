@@ -1,6 +1,8 @@
 .select-wrapper {
     display: inline-block;
     position: relative;
+    width: 250px;
+    margin-block: 0.5em;
 }
 
 select {
@@ -11,34 +13,55 @@ select {
     color: #4a4a4a;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid transparent;
+    border: 1px solid #dfdfdf;
     border-radius: 6px;
     appearance: none;
+    transition: all 0.3s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 4px;
 }
 
-select:focus {
-    outline: none;
-    border-color: #66afe9;
-    box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.5);
-}
-
-.select-wrapper::before {
-    content: "\f078";
-    font-weight: 400;
+.select-wrapper svg {
     position: absolute;
     top: 50%;
     right: 1rem;
-    transform: translateY(-50%);
-    font-size: 1rem;
+    font-size: 24px;
     color: #ccc;
     pointer-events: none;
+    transition: all 0.3s;
+}
+
+.select-wrapper.focused select {
+    outline: none;
+    border-color: #710477;
+    box-shadow: 0 2px 8px rgba(113, 4, 119, 0.2);
+}
+
+.select-wrapper.focused label {
+    color: #710477;
+}
+
+.select-wrapper.focused select {
+    color: #710477;
+}
+
+.select-wrapper.focused svg {
+    color: #710477;
+}
+
+select:hover {
+    border-color: #710477;
+    box-shadow: 0 2px 8px rgba(113, 4, 119, 0.2);
 }
 
 @media (max-width: 576px) {
     select {
         padding-right: 2.5rem;
     }
-    .select-wrapper::before {
-        right: 0.75rem;
-    }
 }
+
+
+
+
+
+

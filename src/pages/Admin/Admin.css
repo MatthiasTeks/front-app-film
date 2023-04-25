@@ -9,10 +9,71 @@
 
 .admin-content {
     position: fixed;
-    width: 60vw;
-    height: 100vh;
+    width: 80vw;
+    height: 100%;
     left: 20vw;
     top: 0;
     padding: 5em;
     overflow: auto;
+}
+
+.admin-content :is(h1, h2, h3, h4) {
+    font-family: "Poppins", sans-serif;
+}
+
+.admin-content :is(h1, h3) {
+    color: black;
+}
+
+.admin-content :is(h2, h4) {
+    color: #403f3f;
+}
+
+.admin-content h1 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.admin-content h2 {
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.admin-content h3 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.admin-content h4 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.admin-content h5, .admin-content label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #4e4d4d;
+}
+
+.admin-container {
+    margin: 2em 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.holder-info-form {
+    border-top: 1px solid #bdbcbc8f;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.holder-info-form > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-block: 2em;
 }

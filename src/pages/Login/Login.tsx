@@ -2,7 +2,7 @@ import React, { FC, useContext } from 'react'
 
 import { AuthContext } from "../../contexts/AuthContext";
 
-import Button from "../../components/Button/Button";
+import { Button } from "../../components/Button/Button";
 
 import './Login.css';
 import {InputComponent} from "../../components/Input/InputComponent";
