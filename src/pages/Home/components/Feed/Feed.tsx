@@ -16,6 +16,7 @@ interface Feed {
     s3_image_key: string;
     is_link: number;
     link: string;
+    signedUrl: string;
 }
 
 const Actualite: FC = () => {
@@ -34,13 +35,15 @@ const Actualite: FC = () => {
                 { news.map((actu, i: number) => {
                         return (
                             <Animation y={-40} yEnd={0} delay={i * 0.1} key={`${actu.name}${i}`} x={0} xEnd={0}>
-                                <div>
-                                    <img
-                                        alt={actu.name}
-                                        height="350"
-                                        src={actu.s3_image_key}
-                                    />
-                                    <div>
+                                <div className="actualite-card" key={`${actu.name}_${i}`}>
+                                    <div className="actualite-img">
+                                        <img
+                                            alt={actu.name}
+                                            height="350"
+                                            src={actu.signedUrl}
+                                        />
+                                    </div>
+                                    <div className="actualite-resume">
                                         <div className="flex row justifyBetween center">
                                             <h3 className="card-title">{actu.name}</h3>
                                             { actu.is_link ?

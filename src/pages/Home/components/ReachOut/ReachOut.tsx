@@ -18,7 +18,7 @@ const ReachOut: FC = () => {
                         afin que tu puisses librement disposer d'images qui te représente artistiquement.
                     </p>
                     <a href="https://www.instagram.com/lesfilmsdelabande/?hl=fr" target="_blank" rel="noreferrer">
-                        <Button isWhite={true} text="Contacte nous"/>
+                        <Button category="secondary-btn" text="Contact" type="button"/>
                     </a>
                 </Animation>
             </div>

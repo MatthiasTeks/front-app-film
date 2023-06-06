@@ -23,7 +23,7 @@ export const UpdateBackground: FC = () => {
     const uploadHomeVideo = (e: FormEvent<HTMLFormElement>, file: any, url: string) => {
         e.preventDefault();
         if(file){
-            uploadFileToUrl(e, file, url)
+            uploadFileToUrl(file, url)
                 .then(r => {
                     if(r.status === 200){
                         setVideoUrl(selectedFile);

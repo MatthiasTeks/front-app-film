@@ -1,8 +1,6 @@
 import axios from "axios";
-import { FormEvent } from "react";
 
-export const uploadFileToUrl = async (e: FormEvent<HTMLFormElement>, file: File, url: string) => {
-    e.preventDefault();
+export const uploadFileToUrl = async (file: File, url: string) => {
     const formData = new FormData();
     formData.append("file", file);
 

@@ -17,7 +17,7 @@ const Introduction: FC = () => {
                         <p className="is5">La bande démo c'est ton CV visuel. C'est la meme chose qu'un book photo mais mis en image. C'est la premiere image que l'on voit de toi lors d'un casting et c'est avant tout, ton premier lien avec ton agent. Il est donc indispensable qu'elle te mette en valeur artistiquement.</p>
                     </div>
                     <Link to="bande-demo">
-                        <Button isWhite={true} text="En savoir plus"/>
+                        <Button category="tertiary-btn" text="En savoir plus"/>
                     </Link>
                 </div>
             </Animation>

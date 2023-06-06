@@ -1,69 +1,81 @@
-import React, { useState, FC, useContext, useEffect } from "react";
-
-import { getSignedProjectMediaUrl } from "../../services/api/fetch";
-
-import { ProjectContext } from "../../App";
-
+import React, {FC, useEffect, useState} from "react";
+import {fetchData, useDataWithLoading} from "../../services/api/fetch";
 import Resume from "./components/Resume/Resume";
+import { Animation } from "../../components/Utils/Animation/Animation";
+
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import './Gallery.css';
+import {Project} from "../../interfaces/Interface";
+import {Link} from "react-router-dom";
 
 const Gallery: FC = () => {
-    const projects = useContext(ProjectContext);
-    const [numProjects, setNumProjects] = useState(6);
-    const [signedUrls, setSignedUrls] = useState<{[key: string]: string}>({});
+    const [page, setPage] = useState(1);
+    const [type, setType] = useState('bande-demo')
+    const [hasMore, setHasMore] = useState(true);
+    const [projects, setProjects] = useState<Project[]>([]);
 
-    // display more project when user scroll
-    const handleScroll = () => {
-        const scrollTop = document.documentElement.scrollTop;
-        const windowHeight = window.innerHeight;
-        const fullHeight = document.documentElement.offsetHeight;
+    const fetchMoreData = () => {
+        setPage(page + 1);
+    }
 
-        if (scrollTop + windowHeight >= fullHeight && numProjects < (projects ?? []).length) {
-            setNumProjects(numProjects + 6);
-        }
-    };
-
-    // render project depend on user scroll
-    const renderProjects = () => {
-        const visibleProjects = (projects ?? []).slice(0, numProjects);
-
-        return visibleProjects.map((project) => {
-            let signedUrl = signedUrls[project.s3_image_main_key];
-
-            if (signedUrl === undefined) {
-                signedUrl = getSignedProjectMediaUrl(project.s3_image_main_key).data?.signedUrl ?? '';
-                setSignedUrls((prevSignedUrls) => ({...prevSignedUrls, [project.s3_image_main_key]: signedUrl }));
-            }
-
-            if (signedUrl) {
-                return (
-                    <div key={project.id_project} className="gallery-project">
-                        <img src={signedUrl} alt={project.label} />
-                        <h3>{project.name}</h3>
-                    </div>
-                )
-            } else {
-                return null;
-            }
-        });
-    };
-
-    // set scroll event listener
     useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [numProjects]);
+        console.log('new page');
+        (async () => {
+            try {
+                const data = await fetchData<Project[]>(`project/page?page=${page}&type=${type}`);
+                if(data.length > 0){
+                    setProjects(prevProjects => [...prevProjects, ...data]);
+                } else {
+                    setHasMore(false);
+                }
+            } catch (error) {
+                console.error('Failed to fetch data:', error);
+            }
+        })();
+    }, [page])
 
+    useEffect(() => {
+        console.log('first effect');
+        (async () => {
+            try {
+                const data = await fetchData<Project[]>(`project/page?page=1&type='bande-demo'`);
+                setProjects(data);
+            } catch (error) {
+                console.error('Failed to fetch data:', error);
+            }
+        })();
+    }, []);
 
     return (
         <React.Fragment>
             <Resume />
-            <div className="bande-demo-gallery flex column">
-                {renderProjects()}
-            </div>
+            { projects.length ?
+                <InfiniteScroll
+                    dataLength={projects.length}
+                    next={fetchMoreData}
+                    hasMore={hasMore}
+                    loader={<h4>Loading...</h4>}
+                >
+                    {projects.map(project => (
+                        <Link key={project.id_project} to={`/demo/${project.label}`} >
+                            <Animation y={0} xEnd={0} delay={0} ease={'easeInOut'} x={0} duration={0.4} yEnd={0} whileHover={{ y: -20 }}
+                            >
+                                <div className="project-card">
+                                    <img src={project.main_image} alt={project.name} />
+                                    <div className="project-details">
+                                        <h2>{project.name}</h2>
+                                        <p>{project.label}</p>
+                                    </div>
+                                </div>
+                            </Animation>
+                        </Link>
+                    ))}
+                </InfiniteScroll>
+                : ''
+            }
         </React.Fragment>
     )
 }
 
-export default Gallery
+export default Gallery;

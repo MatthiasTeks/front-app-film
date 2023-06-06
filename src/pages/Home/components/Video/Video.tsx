@@ -26,7 +26,7 @@ const Video: FC = () => {
             <div className="home-video-content flex column center justifyCenter">
                 <h1>CREATION DE BANDES DEMOS SUR MESURE</h1>
                 <Link to="bande-demo">
-                    <Button isWhite={true} text="En savoir plus" />
+                    <Button category="tertiary-btn" text="En savoir plus" />
                 </Link>
             </div>
             <div className="home-video-scrolling flex column center justifyCenter">

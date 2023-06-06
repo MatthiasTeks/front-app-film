@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query';
+import axios from "axios";
 
 /**
  * Fetcher function to handle HTTP request logic.
@@ -47,34 +48,13 @@ export function useDataWithLoading(url: string): {
     };
 }
 
-export function getSignedProjectMediaUrl(key: string): {
-    data: any,
-    error: Error | null,
-    isLoading: boolean,
-    isError: boolean
-} {
-    if(key !== undefined){
-        const queryUrl = `${import.meta.env.VITE_API_URL}/project/${key}/sign-url`;
-
-        const { data, error, isLoading, isError } = useQuery(
-            ['data', queryUrl],
-            () => fetcher(queryUrl)
-        );
-
-        return {
-            data,
-            error: error ? error as Error : null,
-            isLoading,
-            isError,
-        };
+export async function fetchData<T>(url: string): Promise<T> {
+    try {
+        const response = await axios.get<T>(`${import.meta.env.VITE_API_URL}/${url}`);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
-
-    return {
-        data: undefined,
-        error: null,
-        isLoading: false,
-        isError: false,
-    };
 }
-
 

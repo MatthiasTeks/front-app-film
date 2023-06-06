@@ -1,4 +1,4 @@
-import { FC}  from "react";
+import { FC }  from "react";
 import { NewProject } from "./components/NewProject/NewProject";
 
 export const Project: FC = () => {

@@ -4,6 +4,15 @@
     padding: 4em 10em 2em 10em;
 }
 
+.select-type {
+    display: flex;
+    flex-direction: row;
+}
+
+.select-type > div:last-of-type {
+    margin-left: 1em;
+}
+
 @media screen and (max-width: 900px){
     #bande-demo-resume {
         padding: 2em 2em 0 2em;

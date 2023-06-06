@@ -1,19 +1,42 @@
 import React, { FC } from "react";
-import { Link } from 'react-router-dom';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 import { Project } from "../../../../interfaces/Interface";
 import { useDataWithLoading} from "../../../../services/api/fetch";
 
 import './Carousel.css';
 
+const responsive = {
+    desktop: {
+        breakpoint: {
+            max: 3000,
+            min: 1024
+        },
+        items: 3,
+        partialVisibilityGutter: 40
+    },
+    mobile: {
+        breakpoint: {
+            max: 464,
+            min: 0
+        },
+        items: 1,
+        partialVisibilityGutter: 30
+    },
+    tablet: {
+        breakpoint: {
+            max: 1024,
+            min: 464
+        },
+        items: 2,
+        partialVisibilityGutter: 30
+    }
+};
 
-const Carousel: FC = () => {
+const CarouselComponent: FC = () => {
     const { data, isLoading } = useDataWithLoading("project/highlight");
     const project: Project[] = data ?? [];
-
-    const onCarouselDragStart = (e: React.MouseEvent<HTMLDivElement>): void => {
-        e.preventDefault();
-    }
 
     if(isLoading) return null;
 
@@ -24,24 +47,44 @@ const Carousel: FC = () => {
                 <hr />
             </div>
             <div className="holder-slider">
-                <div className="carousel-container" onDragStart={onCarouselDragStart}>
-                    {project.map((element, index: number) => {
-                        return (
-                            <div key={`${element.name}_${index}`} className="carousel-item">
-                                <img
-                                    alt={element.name}
-                                    src={element.s3_image_main_key}
-                                />
-                                <Link to={`les-artistes/${element.label}`} className="holder-name flex column justifyCenter center">
-                                    <p className="is5">{element.name}</p>
-                                </Link>
-                            </div>
-                        )
-                    })}
-                </div>
+                <Carousel
+                    additionalTransfrom={0}
+                    arrows
+                    autoPlaySpeed={3000}
+                    centerMode
+                    className=""
+                    containerClass="carousel-container"
+                    dotListClass="custom-dot-list-style"
+                    draggable
+                    focusOnSelect={false}
+                    infinite
+                    itemClass="carousel-item-padding-40-px"
+                    keyBoardControl
+                    minimumTouchDrag={80}
+                    pauseOnHover
+                    renderArrowsWhenDisabled={false}
+                    renderButtonGroupOutside={false}
+                    renderDotsOutside={false}
+                    responsive={responsive}
+                    rewind={false}
+                    rewindWithAnimation={false}
+                    rtl={false}
+                    shouldResetAutoplay
+                    showDots={false}
+                    sliderClass=""
+                    slidesToSlide={1}
+                    swipeable
+                >
+                    {project.map((project, index) => (
+                        <div key={index}>
+                            <img src={project.main_image} alt={project.name} />
+                            <p className="legend">{project.name}</p>
+                        </div>
+                    ))}
+                </Carousel>
             </div>
         </div>
     )
 }
 
-export default Carousel;
+export default CarouselComponent;

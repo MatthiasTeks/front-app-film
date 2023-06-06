@@ -14,11 +14,6 @@ const Resume = () => {
         setValue(newValue);
     };
 
-    /**
-     * A tab panel component to display content based on selected tab value
-     * @param {TabPanelProps} props - The props of the component
-     * @returns {JSX.Element} - The tab panel component
-     */
     function TabPanel(props: TabPanelProps) {
         const { children, value, index } = props;
 
@@ -43,7 +38,7 @@ const Resume = () => {
             <div id="bande-demo-resume-holder" className="flex column start justifyCenter blackText" style={{height: "100%", width:"100%"}}>
                 <div className="flex column" style={{ width: "100%" }}>
                     <h2 className="is2">Une { value === 0 ? "bande démo" : "self-tape"}, c'est quoi ?</h2>
-                    <div style={{ borderBottom: "1px solid black", width: "100%" }}>
+                    <div className="select-type" style={{ borderBottom: "1px solid black", width: "100%" }}>
                         <div className={value === 0 ? "active-tab" : "inactive-tab"} onClick={(e) => handleChange(e, 0)}>BANDE-DEMO</div>
                         <div className={value === 1 ? "active-tab" : "inactive-tab"} onClick={(e) => handleChange(e, 1)}>SELF-TAPE</div>
                     </div>

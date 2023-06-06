@@ -9,7 +9,10 @@ interface PropsAnimation {
     x: number;
     xEnd: number;
     delay: number;
+    ease: string;
+    duration: number;
     children?: ReactNode;
+    whileHover?: object;
 }
 
 /**
@@ -17,12 +20,13 @@ interface PropsAnimation {
  * @param {PropsAnimation} props - Component props
  * @returns The animated component.
  */
-export const Animation: FC<PropsAnimation> = ({ y, yEnd, x, xEnd, delay, children }) => {
+export const Animation: FC<PropsAnimation> = ({ y, yEnd, x, xEnd, delay, ease, duration, children, whileHover }) => {
     return (
         <motion.div
             initial={{ opacity: 0, y, x }}
-            whileInView={{ opacity: 1, y: yEnd, x: xEnd }}
-            transition={{ ease: "linear", duration: 1, delay }}
+            animate={{ opacity: 1, y: yEnd, x: xEnd }}
+            transition={{ ease: ease, duration: duration, delay }}
+            whileHover={whileHover}
             viewport={{ once: true }}
         >
             {children}

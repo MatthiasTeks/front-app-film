@@ -3,6 +3,48 @@
     padding: 0 10em 0 10em;
 }
 
+/* Gallery.css */
+
+.infinite-scroll-component__outerdiv {
+    padding: 0 10em;
+}
+
+.infinite-scroll-component {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.infinite-scroll-component > a {
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-basis: 30%;
+    margin: 1.5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+}
+
+.project-details {
+    padding: 1em;
+}
+
+.project-details h2 {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.project-details p {
+    font-size: 1em;
+    color: #666;
+}
+
 @media screen and (max-width: 900px){
     .bande-demo-gallery {
         padding: 0 2em 5em 2em;

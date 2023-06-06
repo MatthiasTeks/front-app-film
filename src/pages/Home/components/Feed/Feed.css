@@ -9,8 +9,38 @@
 
 /* ACTUALITE HOLDER */
 
-#actualite-holder > div {
+.actualite-card {
+    position: relative;
     margin: 0 2em;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+.actualite-img {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.actualite-img img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.actualite-img button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.actualite-resume {
+    padding: 6px 6px 6px 6px;
+}
+
+#movie-admin-form > #actualite-holder {
+    margin-top: 3em;
 }
 
 #actualite-holder svg {

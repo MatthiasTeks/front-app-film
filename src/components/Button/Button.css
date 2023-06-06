@@ -28,6 +28,21 @@
     background-color: #2b2b2b;
 }
 
+.secondary-btn {
+    background-color: white;
+}
+
+.secondary-btn p {
+    color: black;
+}
+
+.tertiary-btn {
+    background-color: transparent;
+    backdrop-filter: blur(2px);
+    padding: 12px 36px;
+    border: 1px solid white;
+}
+
 .disabled-btn {
     background-color: darkgrey;
     cursor: default;
