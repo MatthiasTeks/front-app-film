@@ -57,7 +57,7 @@ const AuthContextProvider: FC<Props> = ({ children }) => {
         e.preventDefault();
         axios
             .post(`${import.meta.env.VITE_API_URL}/user/login`, {
-                email: email,
+                mail: email,
                 password: password,
             })
             .then((res) => {

@@ -1,5 +1,4 @@
 import { FC } from 'react';
-
 import Video from "./components/Video/Video";
 import News from "./components/Feed/Feed";
 import Introduction from "./components/Introduction/Introduction";

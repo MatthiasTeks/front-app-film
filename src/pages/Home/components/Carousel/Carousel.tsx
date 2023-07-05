@@ -1,10 +1,8 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-
 import { Project } from "../../../../interfaces/Interface";
 import { useDataWithLoading} from "../../../../services/api/fetch";
-
+import 'react-multi-carousel/lib/styles.css';
 import './Carousel.css';
 
 const responsive = {
@@ -77,7 +75,7 @@ const CarouselComponent: FC = () => {
                 >
                     {project.map((project, index) => (
                         <div key={index}>
-                            <img src={project.main_image} alt={project.name} />
+                            <img src={project.s3_image_key} alt={project.name} />
                             <p className="legend">{project.name}</p>
                         </div>
                     ))}

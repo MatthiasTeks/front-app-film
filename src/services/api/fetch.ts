@@ -1,13 +1,6 @@
 import { useQuery } from 'react-query';
 import axios from "axios";
 
-/**
- * Fetcher function to handle HTTP request logic.
- * @async
- * @param {string} url - The URL to fetch data from.
- * @throws {Error} Will throw an error if the response is not ok.
- * @returns {Promise<Object>} A promise that resolves to the JSON data.
- */
 async function fetcher(url: string): Promise<any> {
     const resp = await fetch(url);
     if (!resp.ok) {
@@ -16,17 +9,6 @@ async function fetcher(url: string): Promise<any> {
     return resp.json();
 }
 
-/**
- * Custom hook to fetch data using React Query.
- * @function
- * @param {string} url - The URL endpoint to fetch data from.
- * @returns {{
- *   data: Object,
- *   error: Error | null,
- *   isLoading: boolean,
- *   isError: boolean
- * }} An object containing the data, error, isLoading, and isError states.
- */
 export function useDataWithLoading(url: string): {
     data: any,
     error: Error | null,

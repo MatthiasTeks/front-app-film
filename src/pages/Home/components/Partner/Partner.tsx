@@ -14,7 +14,7 @@ const HomePartner: FC = () => {
     const partner: Partner[] = data ?? [];
 
     if(isLoading) return null;
-
+    
     return (
         <div className="home-partner flex column justifyCenter center">
             <div className="home-actor-title flex column center justifyCenter">

@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 
 import { Button } from "../../../../components/Button/Button.jsx";
 import { Animation } from "../../../../components/Utils/Animation/Animation";
-
 import './Introduction.css';
 
 const Introduction: FC = () => {
     return (
         <div className="home-bande-demo flex column justifyCenter">
-            <Animation x={-40} xEnd={0} delay={0.4} y={0} yEnd={0}>
+            <Animation x={-40} xEnd={0} delay={0.4} y={0} yEnd={0} ease="linear" duration={0}>
                 <div id="home-bande-demo-holder" className="flex column start justifyCenter" style={{height: "100%", width: "100%"}}>
                     <h2 className="is2">Une bande démo, c'est quoi ?</h2>
                     <div className="home-bande-demo-resume flex column">

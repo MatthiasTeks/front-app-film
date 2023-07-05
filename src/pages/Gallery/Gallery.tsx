@@ -1,13 +1,11 @@
 import React, {FC, useEffect, useState} from "react";
-import {fetchData, useDataWithLoading} from "../../services/api/fetch";
+import { Link } from "react-router-dom";
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchData } from "../../services/api/fetch";
 import Resume from "./components/Resume/Resume";
 import { Animation } from "../../components/Utils/Animation/Animation";
-
-import InfiniteScroll from 'react-infinite-scroll-component';
-
+import { Project } from "../../interfaces/Interface";
 import './Gallery.css';
-import {Project} from "../../interfaces/Interface";
-import {Link} from "react-router-dom";
 
 const Gallery: FC = () => {
     const [page, setPage] = useState(1);
@@ -20,9 +18,9 @@ const Gallery: FC = () => {
     }
 
     useEffect(() => {
-        console.log('new page');
         (async () => {
             try {
+                console.log('first use:', `project/page?page=${page}&type=${type}`)
                 const data = await fetchData<Project[]>(`project/page?page=${page}&type=${type}`);
                 if(data.length > 0){
                     setProjects(prevProjects => [...prevProjects, ...data]);
@@ -36,10 +34,10 @@ const Gallery: FC = () => {
     }, [page])
 
     useEffect(() => {
-        console.log('first effect');
         (async () => {
             try {
-                const data = await fetchData<Project[]>(`project/page?page=1&type='bande-demo'`);
+                console.log('second use:', `project/page?page=1&type=bande-demo`)
+                const data = await fetchData<Project[]>(`project/page?page=1&type=bande-demo`);
                 setProjects(data);
             } catch (error) {
                 console.error('Failed to fetch data:', error);
@@ -62,7 +60,7 @@ const Gallery: FC = () => {
                             <Animation y={0} xEnd={0} delay={0} ease={'easeInOut'} x={0} duration={0.4} yEnd={0} whileHover={{ y: -20 }}
                             >
                                 <div className="project-card">
-                                    <img src={project.main_image} alt={project.name} />
+                                    <img src={project.s3_image_key} alt={project.name} />
                                     <div className="project-details">
                                         <h2>{project.name}</h2>
                                         <p>{project.label}</p>

@@ -15,7 +15,6 @@ const AlertDisplay: React.FC = () => {
         }
     }, [alerts, removeAlert]);
 
-    console.log(alerts)
     return (
         <div className="alert-container">
             {alerts.map((alert, index) => (

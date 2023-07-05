@@ -39,8 +39,8 @@
     padding: 6px 6px 6px 6px;
 }
 
-#movie-admin-form > #actualite-holder {
-    margin-top: 3em;
+#actualite-holder {
+    overflow: hidden;
 }
 
 #actualite-holder svg {
