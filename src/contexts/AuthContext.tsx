@@ -18,7 +18,7 @@ interface Props {
 
 export const AuthContext = createContext<IAuthContext | undefined>(undefined);
 
-const AuthContextProvider: FC<Props> = ({ children }) => {
+export const AuthContextProvider: FC<Props> = ({ children }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { addAlert } = useContext(AlertContext);
@@ -85,5 +85,3 @@ const AuthContextProvider: FC<Props> = ({ children }) => {
         </AuthContext.Provider>
     );
 };
-
-export default AuthContextProvider;

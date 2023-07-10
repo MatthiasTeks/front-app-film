@@ -1,10 +1,8 @@
 import { FC } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AiOutlineInstagram } from 'react-icons/ai';
-
 import Logo from '../../assets/logo_minia.png';
 import LogoWhite from '../../assets/logo_minia_white.png';
-
 import './Navbar.css';
 
 interface Props {
@@ -12,7 +10,7 @@ interface Props {
     setIsBurgerOpen: (open: boolean) => void;
 }
 
-const Navbar: FC<Props> = ({ isBurgerOpen, setIsBurgerOpen }) => {
+export const Navbar: FC<Props> = ({ isBurgerOpen, setIsBurgerOpen }) => {
     return (
         <div className="navbar flex row center justifyCenter">
             {/* LOGO */}
@@ -51,5 +49,3 @@ const Navbar: FC<Props> = ({ isBurgerOpen, setIsBurgerOpen }) => {
         </div>
     )
 }
-
-export default Navbar

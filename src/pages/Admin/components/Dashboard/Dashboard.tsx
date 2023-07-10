@@ -1,11 +1,9 @@
 import { FC } from 'react';
-
-import {UpdateBackground} from "./components/UpdateBackground/UpdateBackground";
-import {UpdateHighlight} from "./components/UpdateHighlight/UpdateHighlight";
-
+import { UpdateBackground } from "./components/UpdateBackground/UpdateBackground";
+import { UpdateHighlight } from "./components/UpdateHighlight/UpdateHighlight";
 import './Dashboard.css';
 
-const Dashboard: FC = () => {
+export const Dashboard: FC = () => {
     return (
         <div className="dashboard">
             <h1>PANEL ADMINISTRATEUR</h1>
@@ -15,5 +13,3 @@ const Dashboard: FC = () => {
         </div>
     )
 }
-
-export default Dashboard

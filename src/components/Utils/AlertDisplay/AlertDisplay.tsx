@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { AlertContext } from "../../../contexts/AlertContext";
 import './AlertDisplay.css';
 
-const AlertDisplay: React.FC = () => {
+export const AlertDisplay: React.FC = () => {
     const { alerts, removeAlert } = useContext(AlertContext);
 
     useEffect(() => {
@@ -28,5 +28,3 @@ const AlertDisplay: React.FC = () => {
         </div>
     );
 };
-
-export default AlertDisplay;

@@ -3,7 +3,7 @@ import { Animation } from "../../../../components/Utils/Animation/Animation";
 import { Button } from "../../../../components/Button/Button.jsx";
 import './ReachOut.css';
 
-const ReachOut: FC = () => {
+export const ReachOut: FC = () => {
     return (
         <div className="home-holder">
             <div className="home-test flex column center justifyCenter">
@@ -23,5 +23,3 @@ const ReachOut: FC = () => {
         </div>
     )
 }
-
-export default ReachOut

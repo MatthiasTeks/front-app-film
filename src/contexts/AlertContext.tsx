@@ -21,7 +21,7 @@ interface AlertProviderProps {
     children: React.ReactNode;
 }
 
-const AlertProvider: React.FC<AlertProviderProps> = ({ children }) => {
+export const AlertContextProvider: React.FC<AlertProviderProps> = ({ children }) => {
     const [alerts, setAlerts] = useState<Alert[]>([]);
 
     const addAlert = (alert: Alert) => {
@@ -38,5 +38,3 @@ const AlertProvider: React.FC<AlertProviderProps> = ({ children }) => {
         </AlertContext.Provider>
     );
 };
-
-export default AlertProvider;

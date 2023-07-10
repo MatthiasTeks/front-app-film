@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import { Link } from "react-router-dom";
-
 import { Button } from "../../../../components/Button/Button.jsx";
 import { Animation } from "../../../../components/Utils/Animation/Animation";
 import './Introduction.css';
 
-const Introduction: FC = () => {
+export const Introduction: FC = () => {
     return (
         <div className="home-bande-demo flex column justifyCenter">
             <Animation x={-40} xEnd={0} delay={0.4} y={0} yEnd={0} ease="linear" duration={0}>
@@ -23,5 +22,3 @@ const Introduction: FC = () => {
         </div>
     )
 }
-
-export default Introduction;

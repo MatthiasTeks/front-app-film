@@ -1,13 +1,10 @@
 import React, { FC, useContext } from 'react'
-
 import { AuthContext } from "../../contexts/AuthContext";
-
 import { Button } from "../../components/Button/Button";
+import { InputComponent } from "../../components/Input/InputComponent";
+import './LoginPage.css';
 
-import './Login.css';
-import {InputComponent} from "../../components/Input/InputComponent";
-
-const Login: FC = () => {
+export const LoginPage: FC = () => {
     const authContext = useContext(AuthContext);
 
     if (!authContext) {
@@ -45,11 +42,9 @@ const Login: FC = () => {
                             autoComplete="current-password"
                         />
                     </div>
-                    <Button isBlack={true} text="Connexion" type="submit"/>
+                    <Button text="Connexion" type="submit" category='primary-btn' />
                 </form>
             </div>
         </>
     )
 }
-
-export default Login

@@ -2,15 +2,15 @@ import React, {FC, useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchData } from "../../services/api/fetch";
-import Resume from "./components/Resume/Resume";
+import { Resume } from "./components/Resume/Resume";
 import { Animation } from "../../components/Utils/Animation/Animation";
 import { Project } from "../../interfaces/Interface";
-import './Gallery.css';
+import './GalleryPage.css';
 
-const Gallery: FC = () => {
-    const [page, setPage] = useState(1);
-    const [type, setType] = useState('bande-demo')
-    const [hasMore, setHasMore] = useState(true);
+export const GalleryPage: FC = () => {
+    const [page, setPage] = useState<number>(1);
+    const [type, setType] = useState<string>('bande-demo')
+    const [hasMore, setHasMore] = useState<boolean>(true);
     const [projects, setProjects] = useState<Project[]>([]);
 
     const fetchMoreData = () => {
@@ -20,7 +20,6 @@ const Gallery: FC = () => {
     useEffect(() => {
         (async () => {
             try {
-                console.log('first use:', `project/page?page=${page}&type=${type}`)
                 const data = await fetchData<Project[]>(`project/page?page=${page}&type=${type}`);
                 if(data.length > 0){
                     setProjects(prevProjects => [...prevProjects, ...data]);
@@ -36,7 +35,6 @@ const Gallery: FC = () => {
     useEffect(() => {
         (async () => {
             try {
-                console.log('second use:', `project/page?page=1&type=bande-demo`)
                 const data = await fetchData<Project[]>(`project/page?page=1&type=bande-demo`);
                 setProjects(data);
             } catch (error) {
@@ -45,10 +43,11 @@ const Gallery: FC = () => {
         })();
     }, []);
 
+    if(!projects.length) return null;
+
     return (
         <React.Fragment>
             <Resume />
-            { projects.length ?
                 <InfiniteScroll
                     dataLength={projects.length}
                     next={fetchMoreData}
@@ -70,10 +69,6 @@ const Gallery: FC = () => {
                         </Link>
                     ))}
                 </InfiniteScroll>
-                : ''
-            }
         </React.Fragment>
     )
 }
-
-export default Gallery;

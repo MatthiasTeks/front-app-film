@@ -3,15 +3,13 @@ import { useParams } from 'react-router-dom';
 import ReactPlayer from "react-player";
 import {useDataWithLoading} from "../../services/api/fetch";
 
-const Player: FC = () => {
+export const PlayerPage: FC = () => {
     let { label } = useParams();
-    const { data, error, isLoading, isError } = useDataWithLoading(`project/label/${label}`);
+    const { data, isLoading } = useDataWithLoading(`project/label/${label}`);
 
     if (isLoading) {
         return <div>Loading...</div>;
     }
-
-    console.log(data)
 
     return (
         <div className="artiste-player-page flex column justifyCenter center">
@@ -29,5 +27,3 @@ const Player: FC = () => {
         </div>
     )
 }
-
-export default Player

@@ -1,13 +1,12 @@
 import { FC } from 'react'
 import { Link } from "react-router-dom";
-
 import './Footer.css';
 
 interface Props {
     isNewsletterOpen: boolean;
 }
 
-const Footer: FC<Props> = ({isNewsletterOpen}) => {
+export const Footer: FC<Props> = ({isNewsletterOpen}) => {
     return (
         <div className="footer-holder flex column justifyCenter">
             <div className="footer flex row justifyBetween">
@@ -20,5 +19,3 @@ const Footer: FC<Props> = ({isNewsletterOpen}) => {
         </div>
     )
 }
-
-export default Footer;

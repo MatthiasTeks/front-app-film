@@ -29,25 +29,29 @@
     overflow: hidden;
 }
 
-.carousel-container .carousel-item-padding-40-px {
+.react-multi-carousel-track {
+    height: 400px;
+}
+
+.carousel-container .carousel-item {
     display: flex;
     justify-content: center;
 }
 
-.carousel-container .carousel-item-padding-40-px div {
+.carousel-container .carousel-item div {
     position: relative;
     width: 100%;
     margin: 0 10px;
 }
 
-.carousel-container .carousel-item-padding-40-px div img {
+.carousel-container .carousel-item div img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     pointer-events: none;
 }
 
-.carousel-container .carousel-item-padding-40-px div .legend {
+.carousel-container .carousel-item div .legend {
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
     font-size: 1.2em;

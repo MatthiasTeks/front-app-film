@@ -2,11 +2,10 @@ import { FC } from "react";
 import { Outlet } from 'react-router-dom';
 
 import Sidebar from "./components/Sidebar/Sidebar";
+import './AdminPage.css';
 
-import './Admin.css';
 
-
-const Admin: FC = () => {
+export const AdminPage: FC = () => {
 
     return (
         <div className="panel-admin flex row">
@@ -17,6 +16,4 @@ const Admin: FC = () => {
         </div>
     )
 }
-
-export default Admin
 

@@ -1,17 +1,12 @@
 import { FC } from "react";
-import { useDataWithLoading } from "../../../../services/api/fetch";
 import Marquee from "react-fast-marquee";
-import './Partner.css';
+import { useDataWithLoading } from "../../../../services/api/fetch";
+import { PartnerType } from "../../../../interfaces/Interface";
+import './PartnerHome.css';
 
-interface Partner {
-    id_partner: number,
-    name: string;
-    s3_image_key: string;
-}
-
-const HomePartner: FC = () => {
+export const PartnerHome: FC = () => {
     const { data, isLoading } = useDataWithLoading("partner");
-    const partner: Partner[] = data ?? [];
+    const partner: PartnerType[] = data ?? [];
 
     if(isLoading) return null;
     
@@ -38,5 +33,3 @@ const HomePartner: FC = () => {
         </div>
     )
 }
-
-export default HomePartner;
