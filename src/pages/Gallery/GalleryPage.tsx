@@ -29,6 +29,7 @@ export const GalleryPage: FC = () => {
                 } else {
                     setProjects(data);
                 }
+                setHasMore(true);
             } else {
                 setHasMore(false);
             }

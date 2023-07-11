@@ -5,6 +5,7 @@ import { Button } from '../../../../components/Button/Button.js';
 import DefaultVideo from '../../../../assets/default_home_video.mp4';
 import Skeleton from "react-loading-skeleton";
 import './VideoHome.css';
+import { Scroller } from "../../../../components/Scroller/Scroller";
 
 export const VideoHome: FC = () => {
     const { data, isLoading } = useDataWithLoading("background");
@@ -34,10 +35,7 @@ export const VideoHome: FC = () => {
                 </Link>
             </div>
             <div className="home-video-scrolling flex column center justifyCenter">
-                <div className="scroller flex column center">
-                    <hr className="shine-effect"/>
-                    <p className="shine-effect">scroll</p>
-                </div>
+                <Scroller />
             </div>
         </div>
     )

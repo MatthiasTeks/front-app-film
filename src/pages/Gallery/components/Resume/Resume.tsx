@@ -17,18 +17,18 @@ export const Resume: FC<Props> = ({filter, setFilter}) => {
                         { OPTIONS_PROJET.map((option, index) => {
                             return (
                                 <div 
-                                    className={filter === option.label ? "active-tab" : "inactive-tab"} 
+                                    className={filter === option.value ? "active-tab" : "inactive-tab"} 
                                     onClick={() => setFilter(option.value)}
                                     key={`${option.label}_${index}`}
                                 >
-                                    {option.label.toUpperCase()}
+                                    {option.value}
                                 </div>
                             )
                         })}
                     </div>
                 </div>
                 <div id="bande-demo-resume-content" className="flex column">
-                    <p>{filter}</p>
+                    <p>{OPTIONS_PROJET.find(element => element.value === filter)?.description}</p>
                 </div>
             </div>
         </div>
