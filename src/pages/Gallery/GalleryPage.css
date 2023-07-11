@@ -12,11 +12,10 @@
 .infinite-scroll-component {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .infinite-scroll-component > a {
-    overflow: hidden;
     margin: 1.5%;
     flex-basis: 30%;
     cursor: pointer;

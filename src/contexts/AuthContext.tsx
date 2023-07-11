@@ -25,12 +25,6 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
 
     const navigate = useNavigate();
 
-    /**
-     * Function to handle user authentication.
-     * @function
-     * @async
-     * @returns {Promise<void>}
-     */
     const handleConnexion = async (): Promise<void> => {
         const token = localStorage.getItem("token");
         try {
@@ -47,12 +41,6 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
         }
     };
 
-    /**
-     * Function to handle form submission.
-     * @function
-     * @param {React.FormEvent<HTMLFormElement>} e - The form event object.
-     * @returns {void}
-     */
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         axios

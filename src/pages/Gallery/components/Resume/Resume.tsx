@@ -1,51 +1,34 @@
-import React, { FC, useState } from "react";
+import { FC } from "react";
+import { OPTIONS_PROJET } from "../../../../constants/options";
 import './Resume.css';
 
-interface TabPanelProps {
-    children: React.ReactNode;
-    value: number;
-    index: number;
+type Props = {
+    filter: string,
+    setFilter: (value: string) => void,
 }
 
-function TabPanel(props: TabPanelProps) {
-    const { children, value, index } = props;
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-        >
-            {value === index && <div>{children}</div>}
-        </div>
-    );
-}
-
-const tabContent = [
-  "La bande démo c'est ton CV visuel. C'est la même chose qu'un book photo mais mis en image. C'est la première image que l'on voit de toi lors d'un casting. La bande démo c'est ton CV visuel. C'est la même chose qu'un book photo mais mis en image. C'est la première image que l'on voit de toi lors d'un casting.",
-  "La self-tape c'est ton CV visuel. C'est la même chose qu'un book photo mais mis en image. C'est la première image que l'on voit de toi lors d'un casting. La bande démo c'est ton CV visuel. C'est la même chose qu'un book photo mais mis en image. C'est la première image que l'on voit de toi lors d'un casting."
-];
-
-export const Resume: FC = () => {
-    const [value, setValue] = useState<number>(0);
-
-    const handleChange = (event: React.MouseEvent<HTMLDivElement>, newValue: number) => {
-        setValue(newValue);
-    };
-
+export const Resume: FC<Props> = ({filter, setFilter}) => {
     return (
         <div id="bande-demo-resume" className="flex row">
             <div id="bande-demo-resume-holder" className="flex column start justifyCenter blackText">
                 <div className="flex column">
-                    <h2 className="is2">Une { value === 0 ? "bande démo" : "self-tape"}, c'est quoi ?</h2>
+                    <h2 className="is2">Une {filter === "all" ? "bande-demo" : filter}, c'est quoi ?</h2>
                     <div className="select-type">
-                        <div className={value === 0 ? "active-tab" : "inactive-tab"} onClick={(e) => handleChange(e, 0)}>BANDE-DEMO</div>
-                        <div className={value === 1 ? "active-tab" : "inactive-tab"} onClick={(e) => handleChange(e, 1)}>SELF-TAPE</div>
+                        { OPTIONS_PROJET.map((option, index) => {
+                            return (
+                                <div 
+                                    className={filter === option.label ? "active-tab" : "inactive-tab"} 
+                                    onClick={() => setFilter(option.value)}
+                                    key={`${option.label}_${index}`}
+                                >
+                                    {option.label.toUpperCase()}
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
                 <div id="bande-demo-resume-content" className="flex column">
-                    <TabPanel value={value} index={0}>{tabContent[0]}</TabPanel>
-                    <TabPanel value={value} index={1}>{tabContent[1]}</TabPanel>
+                    <p>{filter}</p>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ export const OPTIONS_GENDER = [
 ];
 
 export const OPTIONS_PROJET = [
+    { value: "all", label: "All" },
     { value: "bande-demo", label: "Bande Démo" },
-    { value: "self-tape", label: "Self Tape" },
+    { value: "transmission", label: "Transmission" },
 ];

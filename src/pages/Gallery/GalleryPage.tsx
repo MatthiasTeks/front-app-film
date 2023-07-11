@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useCallback, useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchData } from "../../services/api/fetch";
@@ -6,56 +6,65 @@ import { Resume } from "./components/Resume/Resume";
 import { Animation } from "../../components/Utils/Animation/Animation";
 import { Project } from "../../interfaces/Interface";
 import './GalleryPage.css';
+import { Loader } from "../../components/Loader/Loader";
 
 export const GalleryPage: FC = () => {
     const [page, setPage] = useState<number>(1);
-    const [type, setType] = useState<string>('bande-demo')
+    const [filter, setFilter] = useState<string>('all');
     const [hasMore, setHasMore] = useState<boolean>(true);
     const [projects, setProjects] = useState<Project[]>([]);
 
-    const fetchMoreData = () => {
-        setPage(page + 1);
-    }
+    const fetchMoreData = useCallback(() => {
+        setPage(prevPage => prevPage + 1);
+    }, []);
 
-    useEffect(() => {
-        (async () => {
-            try {
-                const data = await fetchData<Project[]>(`project/page?page=${page}&type=${type}`);
-                if(data.length > 0){
+    const fetchProjects = useCallback(async (page: number, filter: string, appendData: boolean = false) => {
+        try {
+            let endpoint = filter !== "all" ? `project/type-page?page=${page}&type=${filter}` : `project/page?page=${page}`;
+            const data = await fetchData<Project[]>(endpoint);
+
+            if(data.length > 0){
+                if(appendData){
                     setProjects(prevProjects => [...prevProjects, ...data]);
                 } else {
-                    setHasMore(false);
+                    setProjects(data);
                 }
-            } catch (error) {
-                console.error('Failed to fetch data:', error);
+            } else {
+                setHasMore(false);
             }
-        })();
-    }, [page])
+        } catch (error) {
+            console.error('Failed to fetch data:', error);
+        }
+    }, []);
 
     useEffect(() => {
-        (async () => {
-            try {
-                const data = await fetchData<Project[]>(`project/page?page=1&type=bande-demo`);
-                setProjects(data);
-            } catch (error) {
-                console.error('Failed to fetch data:', error);
-            }
-        })();
-    }, []);
+        if(page > 1) {
+            fetchProjects(page, filter, true);
+        }
+    }, [page, fetchProjects]);
+
+    useEffect(() => {
+        setPage(1);
+        fetchProjects(1, filter);
+    }, [filter, fetchProjects]);
+
+    useEffect(() => {
+        console.log(hasMore)
+    }, [hasMore])
 
     if(!projects.length) return null;
 
     return (
         <React.Fragment>
-            <Resume />
+            <Resume filter={filter} setFilter={setFilter}/>
                 <InfiniteScroll
                     dataLength={projects.length}
                     next={fetchMoreData}
                     hasMore={hasMore}
-                    loader={<h4>Loading...</h4>}
+                    loader={<Loader />}
                 >
-                    {projects.map(project => (
-                        <Link key={project.id_project} to={`/demo/${project.label}`} >
+                    {projects.map((project, i) => (
+                        <Link key={`${project.label}_${i}`} to={`/demo/${project.label}`} >
                             <Animation y={0} xEnd={0} delay={0} ease={'easeInOut'} x={0} duration={0.4} yEnd={0} whileHover={{ y: -20 }}
                             >
                                 <div className="project-card">
